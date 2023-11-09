@@ -1,7 +1,15 @@
-export default function Home() {
+import dynamic from "next/dynamic";
+
+const page = () => {
+  const LandingLogo = dynamic(() => import("./components/LandingLogo"), {
+    ssr: false,
+  });
+
   return (
     <div>
-      <h1>ThisHome/</h1>
+      <LandingLogo />
     </div>
   );
-}
+};
+
+export default page;

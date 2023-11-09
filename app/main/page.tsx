@@ -1,7 +1,21 @@
-export default function Main() {
+"use client";
+import styled from "styled-components";
+import Header from "../components/Header";
+import NavBar from "../components/NavBar";
+
+const MainPage = () => {
   return (
-    <div>
-      <h1>ThisMain</h1>
-    </div>
+    <Wrapper>
+      <Header />
+      <NavBar />
+    </Wrapper>
   );
-}
+};
+export default MainPage;
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 375px;
+  height: 812px;
+  background-color: #000000;
+`;
