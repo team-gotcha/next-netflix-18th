@@ -10,6 +10,7 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
+import MainControlBox from "../components/MainControlBox";
 
 export default function Main() {
   const [popularData, setPopularData] = useState([]);
@@ -36,9 +37,9 @@ export default function Main() {
   }, []);
 
   return (
-     <Wrapper>
-       <Header />
-      <ul>
+    <Wrapper>
+      <Header />
+            <ul>
         {popularData ? (
           popularData.results.map((movie) => (
             <li key={movie.id}>
@@ -51,7 +52,9 @@ export default function Main() {
           <h1>Loading...</h1>
         )}
       </ul>
-       <NavBar />
+      <MainControlBox />
+      <NavBar />
+
     </Wrapper>
   );
 };
