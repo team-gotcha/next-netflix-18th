@@ -39,6 +39,7 @@ const MovieContainer = styled.img`
   height: 6.375rem;
   border-radius: 50%; /* Use border-radius to create a circle */
   object-fit: cover;
+  object-position: top;
 `;
 const ItemList = styled.div`
   height: 100%;

@@ -5,6 +5,7 @@ import {
   getPopular,
   getUpcoming,
   getImageUrl,
+  getTopTv,
 } from '../../api/movieApi';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -17,6 +18,8 @@ export default function Main() {
   const [popularData, setPopularData] = useState();
   const [topRatedData, setTopRatedData] = useState();
   const [upComingData, setUpComingData] = useState();
+  const [nowPlayingData, setNowPlayingData] = useState();
+  const [topTv, setTopTv] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,10 +27,13 @@ export default function Main() {
       const topRatedData = await getTopRated();
       const popularData = await getPopular();
       const upcomingData = await getUpcoming();
+      const topTv = await getTopTv();
 
       setPopularData(popularData);
       setTopRatedData(topRatedData);
       setUpComingData(upcomingData);
+      setNowPlayingData(nowPlayingData);
+      setTopTv(topTv);
     };
 
     fetchData();
@@ -38,7 +44,16 @@ export default function Main() {
       <Header />
       <Body>
         {upComingData && <PreviewList title="Previews" data={upComingData} />}
-        {popularData && <MainItemList title="Popular" data={popularData} />}
+        {popularData && (
+          <MainItemList title="Popular on Netflix" data={popularData} />
+        )}
+        {topRatedData && (
+          <MainItemList title="Trending Now" data={topRatedData} />
+        )}
+        {nowPlayingData && (
+          <MainItemList title="Now Playing" data={nowPlayingData} />
+        )}
+        {nowPlayingData && <MainItemList title="Top Tv Series" data={topTv} />}
       </Body>
       <NavBar />
     </Wrapper>
@@ -46,12 +61,14 @@ export default function Main() {
 }
 
 const Wrapper = styled.div`
-  position: relative;
   width: 375px;
   height: 812px;
   background-color: #000000;
 `;
 const Body = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 80%;
   padding-top: 30%;
+  gap: 5%;
 `;
