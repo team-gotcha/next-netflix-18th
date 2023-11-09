@@ -7,6 +7,9 @@ import {
   getImageUrl,
 } from '@/api/movieApi';
 import React, { useEffect, useState } from 'react';
+import styled from "styled-components";
+import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 
 export default function Main() {
   const [popularData, setPopularData] = useState([]);
@@ -33,8 +36,8 @@ export default function Main() {
   }, []);
 
   return (
-    <div>
-      <h1>This is Main</h1>
+     <Wrapper>
+       <Header />
       <ul>
         {popularData ? (
           popularData.results.map((movie) => (
@@ -48,6 +51,14 @@ export default function Main() {
           <h1>Loading...</h1>
         )}
       </ul>
-    </div>
+       <NavBar />
+    </Wrapper>
   );
-}
+};
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 375px;
+  height: 812px;
+  background-color: #000000;
+`;
