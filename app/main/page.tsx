@@ -7,10 +7,11 @@ import {
   getImageUrl,
 } from '../../api/movieApi';
 import React, { useEffect, useState } from 'react';
-import styled from "styled-components";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-import MainControlBox from "../components/MainControlBox";
+import styled from 'styled-components';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import MainItemList from '../components/MainItemList';
+import PreviewList from '../components/PreviewList';
 
 export default function Main() {
   const [popularData, setPopularData] = useState();
@@ -27,10 +28,6 @@ export default function Main() {
       setPopularData(popularData);
       setTopRatedData(topRatedData);
       setUpComingData(upcomingData);
-
-      console.log(popularData);
-      console.log(topRatedData);
-      console.log(upcomingData);
     };
 
     fetchData();
@@ -39,23 +36,11 @@ export default function Main() {
   return (
     <Wrapper>
       <Header />
-            <ul>
-        {popularData ? (
-          popularData.results.map((movie) => (
-            <li key={movie.id}>
-              <img src={getImageUrl(movie.poster_path)} alt="movie poster" />
-              <p>{movie.title}</p>
-              <p>{movie.vote_average}</p>
-            </li>
-          ))
-        ) : (
-          <h1>Loading...</h1>
-        )}
-      </ul>
-
-      <MainControlBox />
+      <Body>
+        {upComingData && <PreviewList title="Previews" data={upComingData} />}
+        {popularData && <MainItemList title="Popular" data={popularData} />}
+      </Body>
       <NavBar />
-
     </Wrapper>
   );
 }
@@ -65,4 +50,8 @@ const Wrapper = styled.div`
   width: 375px;
   height: 812px;
   background-color: #000000;
+`;
+const Body = styled.div`
+  height: 80%;
+  padding-top: 30%;
 `;
