@@ -1,6 +1,7 @@
+'use client';
 import dynamic from "next/dynamic";
 
-const page = () => {
+export default function Home() {
   const LandingLogo = dynamic(() => import("./components/LandingLogo"), {
     ssr: false,
   });
@@ -11,5 +12,3 @@ const page = () => {
     </div>
   );
 };
-
-export default page;
