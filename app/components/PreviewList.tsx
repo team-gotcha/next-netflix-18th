@@ -24,7 +24,7 @@ export default PreviewList;
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 6.375rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;
@@ -33,21 +33,22 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 700;
   color: white;
+  padding-bottom: 1rem;
 `;
 const MovieContainer = styled.img`
   width: 6.375rem;
   height: 6.375rem;
-  border-radius: 50%; /* Use border-radius to create a circle */
+  border-radius: 100%;
   object-fit: cover;
   object-position: top;
 `;
 const ItemList = styled.div`
-  height: 100%;
+  height: 6.375rem;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
 
-  gap: 10px;
+  gap: 1rem;
   &::-webkit-scrollbar {
     display: none;
   }
