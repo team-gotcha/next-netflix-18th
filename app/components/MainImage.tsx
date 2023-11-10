@@ -35,7 +35,7 @@ const MainImage = ({ data }) => {
 
   return (
     <Wrapper>
-      {randomNum !== 0 && data.results && (
+      {randomNum !== 0 && (
         <Image
           src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"

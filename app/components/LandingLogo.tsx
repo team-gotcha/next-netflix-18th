@@ -1,5 +1,3 @@
-"use client";
-
 import { useRouter } from "next/navigation";
 import Lottie from "react-lottie-player";
 import netflix from "@/public/netflix_landing.json";
