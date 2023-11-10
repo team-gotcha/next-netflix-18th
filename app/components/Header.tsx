@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import Image from "next/image";
+import React from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
 
 const Header = () => {
-  const MENU_LIST = ["TV Shows", "Movies", "My List"];
+  const MENU_LIST = ['TV Shows', 'Movies', 'My List'];
 
   return (
     <Wrapper>
       <div>
         <Image
-          src={"/images/netflix-logo.svg"}
+          src={'/images/netflix-logo.svg'}
           width={57}
           height={57}
           alt="logo"
@@ -24,9 +24,9 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 24px;
-  width: 338px;
+  width: 70%;
   height: 57px;
   z-index: 99;
   background-color: transparent;
