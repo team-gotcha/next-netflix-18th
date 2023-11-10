@@ -1,4 +1,12 @@
 "use client";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
+import NavBar from "../components/NavBar";
+import MainItemList from "../components/MainItemList";
+import MainControlBox from "../components/MainControlBox";
+import MainImage from "../components/MainImage";
+
 import {
   getTopRated,
   getNowPlaying,
@@ -7,14 +15,6 @@ import {
   getImageUrl,
   getTopTv,
 } from "../../api/movieApi";
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-import ItemList from "../components/ItemList";
-import MainItemList from "../components/MainItemList";
-import MainControlBox from "../components/MainControlBox";
-import MainImage from "../components/MainImage";
 
 export default function Main() {
   const [popularData, setPopularData] = useState();
@@ -99,6 +99,8 @@ const List = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
+  max-width: 375px;
   width: 100vw;
   height: 100vh;
   background-color: #000000;
