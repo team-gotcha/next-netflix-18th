@@ -1,77 +1,89 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
+import MainItemList from "../components/MainItemList";
 import MainControlBox from "../components/MainControlBox";
 import MainImage from "../components/MainImage";
-import MainItemList from "../components/MainItemList";
 
 import {
   getTopRated,
   getNowPlaying,
   getPopular,
   getUpcoming,
+  getImageUrl,
   getTopTv,
 } from "../../api/movieApi";
 
-const Main = ({
-  upComingData,
-  popularData,
-  topRatedData,
-  nowPlayingData,
-  topTv,
-}: any) => {
-  const sections = [
-    { id: 0, title: "Previews", data: upComingData, circle: true },
-    { id: 1, title: "Popular on Netflix", data: popularData, circle: false },
-    { id: 2, title: "Trending Now", data: topRatedData, circle: false },
-    { id: 3, title: "Now Playing", data: nowPlayingData, circle: false },
-    { id: 4, title: "Top Tv Series", data: topTv, circle: false },
-  ];
+export default function Main() {
+  const [popularData, setPopularData] = useState();
+  const [topRatedData, setTopRatedData] = useState();
+  const [upComingData, setUpComingData] = useState();
+  const [nowPlayingData, setNowPlayingData] = useState();
+  const [topTv, setTopTv] = useState();
 
   useEffect(() => {
-    getData();
-    setTimeout(() => {}, 4000);
-  }, []);
+    const fetchData = async () => {
+      const nowPlayingData = await getNowPlaying();
+      const topRatedData = await getTopRated();
+      const popularData = await getPopular();
+      const upcomingData = await getUpcoming();
+      const topTv = await getTopTv();
 
-  const getData = async () => {
-    const nowPlayingData = await getNowPlaying();
-    const popularData = await getPopular();
-    const topRatedData = await getTopRated();
-    const upComingData = await getUpcoming();
-    const topTv = await getTopTv();
-
-    return {
-      props: { upComingData, popularData, topRatedData, nowPlayingData, topTv },
+      setPopularData(popularData);
+      setTopRatedData(topRatedData);
+      setUpComingData(upcomingData);
+      setNowPlayingData(nowPlayingData);
+      setTopTv(topTv);
     };
-  };
+
+    fetchData();
+  }, []);
 
   return (
     <Wrapper>
       <Header />
       <Body>
         <BodyTop>
-          <MainImage data={popularData} />
+          {popularData && <MainImage data={popularData} />}
           <MainControlBox />
         </BodyTop>
 
         <List>
-          {sections.map((item) => (
+          {upComingData && (
+            <MainItemList title="Previews" data={upComingData} circle={true} />
+          )}
+          {popularData && (
             <MainItemList
-              key={item.id}
-              circle={item.circle}
-              title={item.title}
-              data={item.data}
+              title="Popular on Netflix"
+              data={popularData}
+              circle={false}
             />
-          ))}
+          )}
+          {topRatedData && (
+            <MainItemList
+              title="Trending Now"
+              data={topRatedData}
+              circle={false}
+            />
+          )}
+          {nowPlayingData && (
+            <MainItemList
+              title="Now Playing"
+              data={nowPlayingData}
+              circle={false}
+            />
+          )}
+          {nowPlayingData && (
+            <MainItemList title="Top Tv Series" data={topTv} circle={false} />
+          )}
         </List>
       </Body>
       <NavBar />
     </Wrapper>
   );
-};
-
-export default Main;
+}
 
 const BodyTop = styled.div`
   gap: 2rem;
@@ -95,6 +107,10 @@ const Wrapper = styled.div`
 
   display: flex;
   justify-content: flex-start;
+
+  @media (max-width: 375px) {
+    width: 375px;
+  }
 `;
 const Body = styled.div`
   display: flex;

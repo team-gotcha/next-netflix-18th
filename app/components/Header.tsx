@@ -41,7 +41,7 @@ const Wrapper = styled.div<{ scrollPosition: number }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100vw;
   max-width: 375px;
   height: 57px;
   padding: 44px 20px 30px;
