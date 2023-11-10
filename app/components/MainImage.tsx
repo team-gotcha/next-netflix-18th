@@ -25,32 +25,31 @@ const MainImage = ({ data }) => {
 
   return (
     <Wrapper>
-      <div>{randomNum}</div>
       {randomNum !== 0 && data.results && (
-        <img
+        <StyledImage
           src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"
-          style={{
-            width: '26rem',
-            height: '26rem',
-            background:
-              'linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.00) 87.26%, #000 100%)',
-
-            transition: 'all 0.5s ease-in-out',
-          }}
         />
       )}
     </Wrapper>
   );
 };
+const StyledImage = styled.img`
+  width: 100%;
+  height:  100%;
+  object-fit: fill;
+  transition: all 0.5s ease-in-out;
 
-export default MainImage;
+    pointer-events: none;
+  }
+`;
 
 const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: max(46.18vh, 24.438rem);
-  height: max(49.01vh, 25.9375rem);
+  align-items: flex-start;
+  height: max(50vh);
 `;
+
+export default MainImage;

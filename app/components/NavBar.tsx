@@ -1,39 +1,39 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useState } from 'react';
+import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const NavBar = () => {
   const ITEM_LIST = [
     {
       id: 0,
-      name: "Home",
-      src: "/images/home-on.svg",
-      link: "/main",
+      name: 'Home',
+      src: '/images/home-on.svg',
+      link: '/main',
     },
     {
       id: 1,
-      name: "Search",
-      src: "/images/search-on.svg",
-      link: "/main",
+      name: 'Search',
+      src: '/images/search-on.svg',
+      link: '/main',
     },
     {
       id: 2,
-      name: "Comming Soon",
-      src: "/images/contents-off.svg",
-      link: "/main",
+      name: 'Comming Soon',
+      src: '/images/contents-off.svg',
+      link: '/main',
     },
     {
       id: 3,
-      name: "Downloads",
-      src: "/images/download-off.svg",
-      link: "/main",
+      name: 'Downloads',
+      src: '/images/download-off.svg',
+      link: '/main',
     },
     {
       id: 4,
-      name: "More",
-      src: "/images/hambar-off.svg",
-      link: "/main",
+      name: 'More',
+      src: '/images/hambar-off.svg',
+      link: '/main',
     },
   ];
   const router = useRouter();
@@ -58,7 +58,7 @@ const NavBar = () => {
           >
             <Image src={src} alt={name} width={20} height={20} />
 
-            <span className={selected ? "selected" : "not-selected"}>
+            <span className={selected ? 'selected' : 'not-selected'}>
               {name}
             </span>
           </NavItem>
@@ -71,10 +71,10 @@ const NavBar = () => {
 export default NavBar;
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0px;
-  width: 375px;
-  height: 53px;
+  width: 100vw;
+  height: 8%;
   z-index: 99;
   display: flex;
   flex-direction: row;
@@ -107,7 +107,7 @@ const NavItem = styled.div<{ selected: boolean }>`
   img {
     filter: ${({ selected }) =>
       selected
-        ? ""
-        : "invert(55%) sepia(3%) saturate(0%) hue-rotate(100deg) brightness(95%) contrast(86%)"};
+        ? ''
+        : 'invert(55%) sepia(3%) saturate(0%) hue-rotate(100deg) brightness(95%) contrast(86%)'};
   }
 `;

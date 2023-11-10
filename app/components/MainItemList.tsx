@@ -34,10 +34,15 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 700;
   color: white;
+  padding-bottom: 1rem;
 `;
 const MovieContainer = styled.img`
   height: 10rem;
   border-radius: 0.125rem;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(0.9);
+  }
 `;
 const ItemList = styled.div`
   display: flex;

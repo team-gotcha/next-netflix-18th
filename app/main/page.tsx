@@ -45,33 +45,57 @@ export default function Main() {
     <Wrapper>
       <Header />
       <Body>
-        {popularData && <MainImage data={popularData} />}
-        <MainControlBox />
-        {upComingData && <PreviewList title="Previews" data={upComingData} />}
-        {popularData && (
-          <MainItemList title="Popular on Netflix" data={popularData} />
-        )}
-        {topRatedData && (
-          <MainItemList title="Trending Now" data={topRatedData} />
-        )}
-        {nowPlayingData && (
-          <MainItemList title="Now Playing" data={nowPlayingData} />
-        )}
-        {nowPlayingData && <MainItemList title="Top Tv Series" data={topTv} />}
+        <BodyTop>
+          {popularData && <MainImage data={popularData} />}
+          <MainControlBox />
+        </BodyTop>
+
+        <List>
+          {upComingData && <PreviewList title="Previews" data={upComingData} />}
+          {popularData && (
+            <MainItemList title="Popular on Netflix" data={popularData} />
+          )}
+          {topRatedData && (
+            <MainItemList title="Trending Now" data={topRatedData} />
+          )}
+          {nowPlayingData && (
+            <MainItemList title="Now Playing" data={nowPlayingData} />
+          )}
+          {nowPlayingData && (
+            <MainItemList title="Top Tv Series" data={topTv} />
+          )}
+        </List>
       </Body>
       <NavBar />
     </Wrapper>
   );
 }
 
+const BodyTop = styled.div`
+  gap: 2rem;
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  gap: 3rem;
+
+  padding-bottom: 8rem;
+`;
+
 const Wrapper = styled.div`
-  width: 375px;
-  height: 812px;
+  width: 100vw;
+  height: 100vh;
   background-color: #000000;
+
+  display: flex;
+  justify-content: flex-start;
 `;
 const Body = styled.div`
   display: flex;
   flex-direction: column;
-  height: 80%;
+  width: 100%;
+  height: 70%;
   gap: 5%;
 `;
