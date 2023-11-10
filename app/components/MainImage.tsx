@@ -3,7 +3,15 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getImageUrl } from "@/api/movieApi";
 
-const MainImage = ({ data }) => {
+interface MainImageProps {
+  data: {
+    results: {
+      poster_path: string;
+    }[];
+  };
+}
+
+const MainImage = ({ data }: MainImageProps) => {
   const [randomNum, setRandomNum] = useState(0);
   const [opacity, setOpacity] = useState(100);
 
