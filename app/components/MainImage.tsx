@@ -1,12 +1,13 @@
-import Image from "next/image";
-import styled from "styled-components";
-import { useEffect, useState } from "react";
+import Image from 'next/image';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { getImageUrl } from '@/api/movieApi';
 
-const MainImage = () => {
+const MainImage = ({ data }) => {
   const [randomNum, setRandomNum] = useState(0);
 
   const getRandomNum = () => {
-    setRandomNum(Math.floor(Math.random() * 3) + 1);
+    setRandomNum(Math.floor(Math.random() * 10) + 1);
   };
 
   useEffect(() => {
@@ -24,15 +25,18 @@ const MainImage = () => {
 
   return (
     <Wrapper>
-      {randomNum !== 0 && (
-        <Image
-          src={`/image-poster-${randomNum}.jpeg`}
+      <div>{randomNum}</div>
+      {randomNum !== 0 && data.results && (
+        <img
+          src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"
-          fill
-          priority
           style={{
-            objectFit: "cover",
-            transition: "all 0.5s ease-in-out",
+            width: '26rem',
+            height: '26rem',
+            background:
+              'linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.00) 87.26%, #000 100%)',
+
+            transition: 'all 0.5s ease-in-out',
           }}
         />
       )}

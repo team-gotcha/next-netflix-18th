@@ -1,23 +1,23 @@
-import React from "react";
-import styled from "styled-components";
-import Image from "next/image";
+import React from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
 
 const MainControlBox = () => {
   return (
     <Wrapper>
       <TopRank>
-        <Image src={"/images/topten.svg"} width={15} height={15} alt="topten" />
-        <TopRankText>#2 in Nigeria Today</TopRankText>
+        <Image src={'/images/topten.svg'} width={15} height={15} alt="topten" />
+        <TopRankText>in Nigeria Today</TopRankText>
       </TopRank>
       <BtnDiv>
         <IconBox>
-          <Image src={"/images/plus.svg"} width={24} height={24} alt="plus" />
+          <Image src={'/images/plus.svg'} width={24} height={24} alt="plus" />
           <span>My List</span>
         </IconBox>
 
         <PlayButton>
           <Image
-            src={"/images/play_icon.svg"}
+            src={'/images/play_icon.svg'}
             width={24}
             height={24}
             alt="play_icon"
@@ -26,7 +26,7 @@ const MainControlBox = () => {
         </PlayButton>
 
         <IconBox>
-          <Image src={"/images/info.svg"} width={24} height={24} alt="info" />
+          <Image src={'/images/info.svg'} width={24} height={24} alt="info" />
           <span>Info</span>
         </IconBox>
       </BtnDiv>
@@ -36,7 +36,6 @@ const MainControlBox = () => {
 export default MainControlBox;
 
 export const Wrapper = styled.div`
-  margin-top: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
