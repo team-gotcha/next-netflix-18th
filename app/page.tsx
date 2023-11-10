@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import dynamic from "next/dynamic";
 
 export default function Home() {
@@ -11,4 +11,4 @@ export default function Home() {
       <LandingLogo />
     </div>
   );
-};
+}

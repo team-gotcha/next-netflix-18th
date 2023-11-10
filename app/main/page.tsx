@@ -1,4 +1,12 @@
-'use client';
+"use client";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
+import NavBar from "../components/NavBar";
+import MainItemList from "../components/MainItemList";
+import MainControlBox from "../components/MainControlBox";
+import MainImage from "../components/MainImage";
+
 import {
   getTopRated,
   getNowPlaying,
@@ -6,15 +14,7 @@ import {
   getUpcoming,
   getImageUrl,
   getTopTv,
-} from '../../api/movieApi';
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import NavBar from '../components/NavBar';
-import MainItemList from '../components/MainItemList';
-import PreviewList from '../components/PreviewList';
-import MainControlBox from '../components/MainControlBox';
-import MainImage from '../components/MainImage';
+} from "../../api/movieApi";
 
 export default function Main() {
   const [popularData, setPopularData] = useState();
@@ -51,18 +51,32 @@ export default function Main() {
         </BodyTop>
 
         <List>
-          {upComingData && <PreviewList title="Previews" data={upComingData} />}
+          {upComingData && (
+            <MainItemList title="Previews" data={upComingData} circle={true} />
+          )}
           {popularData && (
-            <MainItemList title="Popular on Netflix" data={popularData} />
+            <MainItemList
+              title="Popular on Netflix"
+              data={popularData}
+              circle={false}
+            />
           )}
           {topRatedData && (
-            <MainItemList title="Trending Now" data={topRatedData} />
+            <MainItemList
+              title="Trending Now"
+              data={topRatedData}
+              circle={false}
+            />
           )}
           {nowPlayingData && (
-            <MainItemList title="Now Playing" data={nowPlayingData} />
+            <MainItemList
+              title="Now Playing"
+              data={nowPlayingData}
+              circle={false}
+            />
           )}
           {nowPlayingData && (
-            <MainItemList title="Top Tv Series" data={topTv} />
+            <MainItemList title="Top Tv Series" data={topTv} circle={false} />
           )}
         </List>
       </Body>
@@ -85,12 +99,18 @@ const List = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
+  max-width: 375px;
   width: 100vw;
   height: 100vh;
   background-color: #000000;
 
   display: flex;
   justify-content: flex-start;
+
+  @media (max-width: 375px) {
+    width: 375px;
+  }
 `;
 const Body = styled.div`
   display: flex;
