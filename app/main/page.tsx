@@ -13,6 +13,8 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import MainItemList from '../components/MainItemList';
 import PreviewList from '../components/PreviewList';
+import MainControlBox from '../components/MainControlBox';
+import MainImage from '../components/MainImage';
 
 export default function Main() {
   const [popularData, setPopularData] = useState();
@@ -43,6 +45,8 @@ export default function Main() {
     <Wrapper>
       <Header />
       <Body>
+        {popularData && <MainImage data={popularData} />}
+        <MainControlBox />
         {upComingData && <PreviewList title="Previews" data={upComingData} />}
         {popularData && (
           <MainItemList title="Popular on Netflix" data={popularData} />
@@ -69,6 +73,5 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   height: 80%;
-  padding-top: 30%;
   gap: 5%;
 `;
