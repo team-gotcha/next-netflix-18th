@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed top-0 flex justify-between items-center w-full max-w-[375px] h-[57px] px-4 md:px-5 lg:px-6 py-8 z-50 transition-all ${
+      className={`fixed top-0 flex justify-between items-center w-full max-w-[375px] h-[57px] px-4 md:px-5 lg:px-6 py-8 z-50 transition-all duration-300 ease ${
         scrollPosition > 100
           ? "bg-black"
           : "bg-gradient-to-b from-[rgba(18, 18, 18, 0.9)] to-[rgba(18, 18, 18, 0)]"
