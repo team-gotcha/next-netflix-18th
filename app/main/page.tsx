@@ -1,41 +1,26 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-import MainItemList from "../components/MainItemList";
-import MainControlBox from "../components/MainControlBox";
-import MainImage from "../components/MainImage";
+'use client';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import MainItemList from '../components/MainItemList';
+import MainControlBox from '../components/MainControlBox';
+import MainImage from '../components/MainImage';
 
-import {
-  getTopRated,
-  getNowPlaying,
-  getPopular,
-  getUpcoming,
-  getImageUrl,
-  getTopTv,
-} from "../../api/movieApi";
+import { getMovies, getImageUrl } from '../../api/movieApi';
 
 export default function Main() {
   const [popularData, setPopularData] = useState();
   const [topRatedData, setTopRatedData] = useState();
   const [upComingData, setUpComingData] = useState();
   const [nowPlayingData, setNowPlayingData] = useState();
-  const [topTv, setTopTv] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
-      const nowPlayingData = await getNowPlaying();
-      const topRatedData = await getTopRated();
-      const popularData = await getPopular();
-      const upcomingData = await getUpcoming();
-      const topTv = await getTopTv();
-
-      setPopularData(popularData);
-      setTopRatedData(topRatedData);
-      setUpComingData(upcomingData);
-      setNowPlayingData(nowPlayingData);
-      setTopTv(topTv);
+      setPopularData(await getMovies('movie/popular'));
+      setTopRatedData(await getMovies('movie/top_rated'));
+      setUpComingData(await getMovies('movie/upcoming'));
+      setNowPlayingData(await getMovies('movie/now_playing'));
     };
 
     fetchData();
@@ -74,9 +59,6 @@ export default function Main() {
               data={nowPlayingData}
               circle={false}
             />
-          )}
-          {nowPlayingData && (
-            <MainItemList title="Top Tv Series" data={topTv} circle={false} />
           )}
         </List>
       </Body>
