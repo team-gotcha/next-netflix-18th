@@ -6,7 +6,7 @@ import Image from "next/image";
 interface MainItemListProps {
   title: string;
   data: {
-    results?: {
+    results: {
       id: number;
       poster_path: string;
     }[];
@@ -71,7 +71,7 @@ const ItemList = styled.div`
 const MovieContainer = styled.div<{ circle: boolean }>`
   background-color: #8080809b;
   min-width: 100px;
-  height: ${(props) => (props.circle ? "100px" : "150px")};
+  height: ${(props) => (props.circle ? "100px" : "15px")};
   border-radius: ${(props) => (props.circle ? "50%" : "2px")};
   overflow: hidden;
   position: relative;

@@ -1,6 +1,6 @@
-import api from './index';
+import api from "./index";
 
-const API_KEY = '6d482b614139b65c7359f30521c4deb2';
+const API_KEY = "6d482b614139b65c7359f30521c4deb2";
 
 export const getNowPlaying = () => {
   return api
@@ -24,6 +24,6 @@ export const getTopTv = () => {
   return api.get(`tv/popular?language=en-US&page=1`).then((res) => res.data);
 };
 
-export const getImageUrl = (path = '', size = 400) => {
+export const getImageUrl = (path = "", size = 400) => {
   return `https://image.tmdb.org/t/p/w${size}${path}`;
 };
