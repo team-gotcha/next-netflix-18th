@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
@@ -14,7 +15,7 @@ const ITEM_LIST = [
     id: 1,
     name: "Search",
     src: "/images/search-on.svg",
-    link: "/main",
+    link: "/search",
   },
   {
     id: 2,
@@ -46,7 +47,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-full max-w-[375px] h-14 flex justify-evenly items-center bg-neutral-900 z-50">
+    <div className="fixed bottom-0 w-full max-w-[450px] h-14 flex justify-evenly items-center bg-neutral-900 z-50">
       {ITEM_LIST.map(({ id, name, link, src }) => {
         const selected: boolean = currentTab === id;
         return (

@@ -1,7 +1,7 @@
+"use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getImageUrl } from "@/api/movieApi";
-
 
 interface MainImageProps {
   data: {
@@ -51,9 +51,9 @@ const MainImage = ({ data }: MainImageProps) => {
           fill
           priority
           style={{
-            objectFit: 'cover',
+            objectFit: "cover",
             opacity: opacity / 100,
-            transition: 'all 0.5s ease-in-out',
+            transition: "all 0.5s ease-in-out",
           }}
         />
       )}

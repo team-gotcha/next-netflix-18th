@@ -1,19 +1,17 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import MainItemList from "../components/MainItemList";
 import MainControlBox from "../components/MainControlBox";
 import MainImage from "../components/MainImage";
 
-
-import { getMovies, getImageUrl } from '../../api/movieApi';
+import { getMovies, getImageUrl } from "../../api/movieApi";
 
 export const getData = async () => {
-  const popularData = await getMovies('movie/popular');
-  const topRatedData = await getMovies('movie/top_rated');
-  const upComingData = await getMovies('movie/upcoming');
-  const nowPlayingData = await getMovies('movie/now_playing');
+  const popularData = await getMovies("movie/popular");
+  const topRatedData = await getMovies("movie/top_rated");
+  const upComingData = await getMovies("movie/upcoming");
+  const nowPlayingData = await getMovies("movie/now_playing");
 
   const movieDataArray = [
     popularData,
@@ -24,7 +22,6 @@ export const getData = async () => {
 
   return movieDataArray;
 };
-
 
 interface dataProps {
   movieDataArray: Array<{
@@ -39,7 +36,7 @@ export default async function Main() {
   const [popularData, topRatedData, upComingData, nowPlayingData] =
     await getData();
   return (
-    <div className="relative max-w-[375px] w-full h-screen bg-black flex justify-start lg:w-[375px]">
+    <div className="relative max-w-[450px] w-full h-screen bg-black flex justify-start lg:w-[450px]">
       <Header />
       <div className="flex flex-col w-full h-70vh gap-5">
         <div className="flex gap-8">
@@ -72,8 +69,8 @@ export default async function Main() {
               circle={false}
             />
           )}
-        </List>
-      </Body>
+        </div>
+      </div>
       <NavBar />
     </div>
   );
