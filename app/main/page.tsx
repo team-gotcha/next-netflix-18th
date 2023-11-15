@@ -1,46 +1,42 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-import MainItemList from "../components/MainItemList";
-import MainControlBox from "../components/MainControlBox";
-import MainImage from "../components/MainImage";
+'use client';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import MainItemList from '../components/MainItemList';
+import MainControlBox from '../components/MainControlBox';
+import MainImage from '../components/MainImage';
 
-import {
-  getTopRated,
-  getNowPlaying,
-  getPopular,
-  getUpcoming,
-  getImageUrl,
-  getTopTv,
-} from "../../api/movieApi";
+import { getMovies, getImageUrl } from '../../api/movieApi';
 
-export default function Main() {
-  const [popularData, setPopularData] = useState();
-  const [topRatedData, setTopRatedData] = useState();
-  const [upComingData, setUpComingData] = useState();
-  const [nowPlayingData, setNowPlayingData] = useState();
-  const [topTv, setTopTv] = useState();
+export const getData = async () => {
+  const popularData = await getMovies('movie/popular');
+  const topRatedData = await getMovies('movie/top_rated');
+  const upComingData = await getMovies('movie/upcoming');
+  const nowPlayingData = await getMovies('movie/now_playing');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const nowPlayingData = await getNowPlaying();
-      const topRatedData = await getTopRated();
-      const popularData = await getPopular();
-      const upcomingData = await getUpcoming();
-      const topTv = await getTopTv();
+  const movieDataArray = [
+    popularData,
+    topRatedData,
+    upComingData,
+    nowPlayingData,
+  ];
 
-      setPopularData(popularData);
-      setTopRatedData(topRatedData);
-      setUpComingData(upcomingData);
-      setNowPlayingData(nowPlayingData);
-      setTopTv(topTv);
-    };
+  return movieDataArray;
+};
 
-    fetchData();
-  }, []);
+interface dataProps {
+  movieDataArray: Array<{
+    results?: {
+      id: number;
+      poster_path: string;
+    }[];
+  }>;
+}
 
+export default async function Main() {
+  const [popularData, topRatedData, upComingData, nowPlayingData] =
+    await getData();
   return (
     <Wrapper>
       <Header />
@@ -74,9 +70,6 @@ export default function Main() {
               data={nowPlayingData}
               circle={false}
             />
-          )}
-          {nowPlayingData && (
-            <MainItemList title="Top Tv Series" data={topTv} circle={false} />
           )}
         </List>
       </Body>
