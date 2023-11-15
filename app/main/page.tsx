@@ -6,41 +6,38 @@ import MainItemList from "../components/MainItemList";
 import MainControlBox from "../components/MainControlBox";
 import MainImage from "../components/MainImage";
 
-import {
-  getTopRated,
-  getNowPlaying,
-  getPopular,
-  getUpcoming,
-  getImageUrl,
-  getTopTv,
-} from "../../api/movieApi";
 
-export default function Main() {
-  const [popularData, setPopularData] = useState();
-  const [topRatedData, setTopRatedData] = useState();
-  const [upComingData, setUpComingData] = useState();
-  const [nowPlayingData, setNowPlayingData] = useState();
-  const [topTv, setTopTv] = useState();
+import { getMovies, getImageUrl } from '../../api/movieApi';
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const nowPlayingData = await getNowPlaying();
-      const topRatedData = await getTopRated();
-      const popularData = await getPopular();
-      const upcomingData = await getUpcoming();
-      const topTv = await getTopTv();
+export const getData = async () => {
+  const popularData = await getMovies('movie/popular');
+  const topRatedData = await getMovies('movie/top_rated');
+  const upComingData = await getMovies('movie/upcoming');
+  const nowPlayingData = await getMovies('movie/now_playing');
 
-      setPopularData(popularData);
-      setTopRatedData(topRatedData);
-      setUpComingData(upcomingData);
-      setNowPlayingData(nowPlayingData);
-      setTopTv(topTv);
-      console.log(topTv);
-    };
+  const movieDataArray = [
+    popularData,
+    topRatedData,
+    upComingData,
+    nowPlayingData,
+  ];
 
-    fetchData();
-  }, []);
+  return movieDataArray;
+};
 
+
+interface dataProps {
+  movieDataArray: Array<{
+    results?: {
+      id: number;
+      poster_path: string;
+    }[];
+  }>;
+}
+
+export default async function Main() {
+  const [popularData, topRatedData, upComingData, nowPlayingData] =
+    await getData();
   return (
     <div className="relative max-w-[375px] w-full h-screen bg-black flex justify-start lg:w-[375px]">
       <Header />
@@ -75,11 +72,8 @@ export default function Main() {
               circle={false}
             />
           )}
-          {nowPlayingData && (
-            <MainItemList title="Top Tv Series" data={topTv} circle={false} />
-          )}
-        </div>
-      </div>
+        </List>
+      </Body>
       <NavBar />
     </div>
   );
