@@ -9,23 +9,34 @@ import MainImage from '../components/MainImage';
 
 import { getMovies, getImageUrl } from '../../api/movieApi';
 
-export default function Main() {
-  const [popularData, setPopularData] = useState();
-  const [topRatedData, setTopRatedData] = useState();
-  const [upComingData, setUpComingData] = useState();
-  const [nowPlayingData, setNowPlayingData] = useState();
+export const getData = async () => {
+  const popularData = await getMovies('movie/popular');
+  const topRatedData = await getMovies('movie/top_rated');
+  const upComingData = await getMovies('movie/upcoming');
+  const nowPlayingData = await getMovies('movie/now_playing');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setPopularData(await getMovies('movie/popular'));
-      setTopRatedData(await getMovies('movie/top_rated'));
-      setUpComingData(await getMovies('movie/upcoming'));
-      setNowPlayingData(await getMovies('movie/now_playing'));
-    };
+  const movieDataArray = [
+    popularData,
+    topRatedData,
+    upComingData,
+    nowPlayingData,
+  ];
 
-    fetchData();
-  }, []);
+  return movieDataArray;
+};
 
+interface dataProps {
+  movieDataArray: Array<{
+    results?: {
+      id: number;
+      poster_path: string;
+    }[];
+  }>;
+}
+
+export default async function Main() {
+  const [popularData, topRatedData, upComingData, nowPlayingData] =
+    await getData();
   return (
     <Wrapper>
       <Header />
