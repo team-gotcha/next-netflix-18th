@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import { getImageUrl } from '@/api/movieApi';
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getImageUrl } from "@/api/movieApi";
+
 
 interface MainImageProps {
   data: {
@@ -43,7 +43,7 @@ const MainImage = ({ data }: MainImageProps) => {
   }, [randomNum]);
 
   return (
-    <Wrapper>
+    <div className="relative flex justify-center items-start max-h-[50vh]">
       {randomNum !== 0 && (
         <Image
           src={getImageUrl(data.results[randomNum].poster_path)}
@@ -57,31 +57,9 @@ const MainImage = ({ data }: MainImageProps) => {
           }}
         />
       )}
-      <div className="overlay" />
-    </Wrapper>
+      <div className="absolute z-10 w-full h-full bg-gradient-to-b from-[rgba(0, 0, 0, 0.5)] via-[rgba(0, 0, 0, 0)] to-black" />
+    </div>
   );
 };
-
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: max(50vh);
-
-  .overlay {
-    position: absolute;
-    background-color: rgb(90, 90, 90);
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1)
-    );
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-  }
-`;
 
 export default MainImage;

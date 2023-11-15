@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import Image from "next/image";
 
 const Header = () => {
@@ -18,7 +17,13 @@ const Header = () => {
   }, []);
 
   return (
-    <Wrapper scrollPosition={scrollPosition}>
+    <div
+      className={`fixed top-0 flex justify-between items-center w-full max-w-[375px] h-[57px] px-4 md:px-5 lg:px-6 py-8 z-50 transition-all duration-300 ease ${
+        scrollPosition > 100
+          ? "bg-black"
+          : "bg-gradient-to-b from-[rgba(18, 18, 18, 0.9)] to-[rgba(18, 18, 18, 0)]"
+      }`}
+    >
       <div>
         <Image
           src={"/images/netflix-logo.svg"}
@@ -28,33 +33,13 @@ const Header = () => {
         />
       </div>
       {MENU_LIST.map((menu) => {
-        return <Menu key={menu}>{menu}</Menu>;
+        return (
+          <span key={menu} className="text-white text-17.2 cursor-pointer">
+            {menu}
+          </span>
+        );
       })}
-    </Wrapper>
+    </div>
   );
 };
 export default Header;
-
-const Wrapper = styled.div<{ scrollPosition: number }>`
-  position: fixed;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  max-width: 375px;
-  height: 57px;
-  padding: 44px 20px 30px;
-  z-index: 99;
-  background: ${({ scrollPosition }) =>
-    scrollPosition > 100
-      ? `#121212`
-      : `linear-gradient(to bottom, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0))`};
-  transition: background 0.3s ease;
-`;
-
-const Menu = styled.span`
-  color: white;
-  font-size: 17.2px;
-  cursor: pointer;
-`;

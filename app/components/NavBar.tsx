@@ -46,7 +46,7 @@ const NavBar = () => {
   };
 
   return (
-    <Container>
+    <div className="fixed bottom-0 w-full max-w-[375px] h-14 flex justify-evenly items-center bg-neutral-900 z-50">
       {ITEM_LIST.map(({ id, name, link, src }) => {
         const selected: boolean = currentTab === id;
         return (
@@ -65,25 +65,11 @@ const NavBar = () => {
           </NavItem>
         );
       })}
-    </Container>
+    </div>
   );
 };
 
 export default NavBar;
-
-const Container = styled.div`
-  position: fixed;
-  bottom: 0px;
-  width: 100vw;
-  max-width: 375px;
-  height: 8%;
-  z-index: 99;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #121212;
-`;
 
 const NavItem = styled.div<{ selected: boolean }>`
   display: flex;
