@@ -1,11 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-import MainItemList from "../components/MainItemList";
-import MainControlBox from "../components/MainControlBox";
-import MainImage from "../components/MainImage";
-
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import MainItemList from '../components/MainItemList';
+import MainControlBox from '../components/MainControlBox';
+import MainImage from '../components/MainImage';
 
 import { getMovies, getImageUrl } from '../../api/movieApi';
 
@@ -24,7 +22,6 @@ export const getData = async () => {
 
   return movieDataArray;
 };
-
 
 interface dataProps {
   movieDataArray: Array<{
@@ -72,8 +69,8 @@ export default async function Main() {
               circle={false}
             />
           )}
-        </List>
-      </Body>
+        </div>
+      </div>
       <NavBar />
     </div>
   );

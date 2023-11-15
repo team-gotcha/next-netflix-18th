@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { getImageUrl } from "@/api/movieApi";
-
+'use client';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { getImageUrl } from '@/api/movieApi';
 
 interface MainImageProps {
   data: {
