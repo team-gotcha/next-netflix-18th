@@ -41,17 +41,41 @@ export default function Detail() {
           height={100}
         />
       )}
-      <PlayBut />
+      <PlayBut>▶︎ Play</PlayBut>
       <Text>
-        <Title></Title>
-        <DescribeText></DescribeText>
+        {data && <Title>{data.title}</Title>}
+        {data && <DescribeText>{data.overview}</DescribeText>}
       </Text>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div``;
-const PlayBut = styled.div``;
-const Text = styled.div``;
-const Title = styled.div``;
-const DescribeText = styled.div``;
+const PlayBut = styled.div`
+  width: 18.9375rem;
+  height: 2.8125rem;
+  border-radius: 0.35156rem;
+  background: #c4c4c4;
+
+  font-family: SF Pro Display;
+  font-size: 1.27888rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.875rem;
+`;
+const Text = styled.div`
+  font-family: SF Pro Display;
+  font-size: 1.67175rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25rem;
+`;
+const Title = styled.div`
+  color: rgba(255, 255, 255, 1);
+`;
+const DescribeText = styled.div`
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.69631rem;
+  font-weight: 400;
+  line-height: 0.88563rem;
+`;

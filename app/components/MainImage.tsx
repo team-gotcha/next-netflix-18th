@@ -48,8 +48,10 @@ const MainImage = ({ data }: MainImageProps) => {
         <Image
           src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"
-          fill
           priority
+          width={0}
+          height={0}
+          sizes="100vw"
           style={{
             objectFit: 'cover',
             opacity: opacity / 100,
