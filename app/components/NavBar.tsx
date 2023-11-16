@@ -15,7 +15,7 @@ const ITEM_LIST = [
     id: 1,
     name: "Search",
     src: "/images/search-on.svg",
-    link: "/search",
+    link: "/main",
   },
   {
     id: 2,
