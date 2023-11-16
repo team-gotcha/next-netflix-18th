@@ -43,15 +43,13 @@ const MainImage = ({ data }: MainImageProps) => {
   }, [randomNum]);
 
   return (
-    <div className="relative flex justify-center items-start max-h-[50vh]">
+    <div className="relative flex justify-center items-start w-full h-full ">
       {randomNum !== 0 && (
         <Image
           src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"
+          layout="fill"
           priority
-          width={0}
-          height={0}
-          sizes="100vw"
           style={{
             objectFit: 'cover',
             opacity: opacity / 100,
@@ -59,9 +57,26 @@ const MainImage = ({ data }: MainImageProps) => {
           }}
         />
       )}
-      <div className="absolute z-10 w-full h-full bg-gradient-to-b from-[rgba(0, 0, 0, 0.5)] via-[rgba(0, 0, 0, 0)] to-black" />
     </div>
   );
 };
 
 export default MainImage;
+
+// const StyledImage = styled.img`
+//   width: 100%;
+//   height:  100%;
+//   object-fit: fill;
+//   transition: all 0.5s ease-in-out;
+
+//     pointer-events: none;
+//   }
+// `;
+
+// const Wrapper = styled.div`
+//   position: relative;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-start;
+//   height: max(50vh);
+// `;
