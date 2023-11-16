@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-const SearchingItem = () => {
+const SearchingItem = (key: any, src: string) => {
   return (
     <>
       <div className="flex flex-row w-full h-20 items-center bg-neutral-700">
         <div className="relative w-2/5 h-full rounded-sm">
           <Image
-            src={"/images/ex-img.png"}
+            src={src}
             alt={"search"}
             fill
             style={{

@@ -14,7 +14,7 @@ const SearchingBar = () => {
         />
         <input
           placeholder="Search for a show, movie, genre, e.t.c."
-          className="w-3/4 h-8 bg-transparent placeholder:text-neutral-300"
+          className="w-3/4 h-8 bg-transparent text-neutral-300 placeholder:text-neutral-300 focus:outline-none"
         />
         <Image
           src={"/images/delete.svg"}
