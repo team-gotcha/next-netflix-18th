@@ -45,14 +45,13 @@ const MainImage = ({ data }: MainImageProps) => {
   return (
     <div className="relative flex justify-center items-start w-full h-full ">
       {randomNum !== 0 && (
-        <Image
+        <img
           src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"
-          layout="fill"
-          priority
           style={{
-            objectFit: 'cover',
-            opacity: opacity / 100,
+            width: '100%',
+            height: '100%',
+            opacity: '0.7',
             transition: 'all 0.5s ease-in-out',
           }}
         />
