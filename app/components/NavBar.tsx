@@ -1,39 +1,39 @@
-'use client';
-import { useState } from 'react';
-import styled from 'styled-components';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import styled from "styled-components";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const ITEM_LIST = [
   {
     id: 0,
-    name: 'Home',
-    src: '/images/home-on.svg',
-    link: '/main',
+    name: "Home",
+    src: "/images/home-on.svg",
+    link: "/main",
   },
   {
     id: 1,
-    name: 'Search',
-    src: '/images/search-on.svg',
-    link: '/main',
+    name: "Search",
+    src: "/images/search-on.svg",
+    link: "/search",
   },
   {
     id: 2,
-    name: 'Comming Soon',
-    src: '/images/contents-off.svg',
-    link: '/',
+    name: "Comming Soon",
+    src: "/images/contents-off.svg",
+    link: "/",
   },
   {
     id: 3,
-    name: 'Downloads',
-    src: '/images/download-off.svg',
-    link: '/',
+    name: "Downloads",
+    src: "/images/download-off.svg",
+    link: "/",
   },
   {
     id: 4,
-    name: 'More',
-    src: '/images/hambar-off.svg',
-    link: '/',
+    name: "More",
+    src: "/images/hambar-off.svg",
+    link: "/",
   },
 ];
 
@@ -60,7 +60,7 @@ const NavBar = () => {
           >
             <Image src={src} alt={name} width={20} height={20} />
 
-            <span className={selected ? 'selected' : 'not-selected'}>
+            <span className={selected ? "selected" : "not-selected"}>
               {name}
             </span>
           </NavItem>
@@ -96,7 +96,7 @@ const NavItem = styled.div<{ selected: boolean }>`
   img {
     filter: ${({ selected }) =>
       selected
-        ? ''
-        : 'invert(55%) sepia(3%) saturate(0%) hue-rotate(100deg) brightness(95%) contrast(86%)'};
+        ? ""
+        : "invert(55%) sepia(3%) saturate(0%) hue-rotate(100deg) brightness(95%) contrast(86%)"};
   }
 `;
