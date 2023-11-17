@@ -1,7 +1,7 @@
-'use client';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { getImageUrl } from '@/api/movieApi';
+"use client";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getImageUrl } from "@/api/movieApi";
 
 interface MainImageProps {
   data: {
@@ -43,39 +43,23 @@ const MainImage = ({ data }: MainImageProps) => {
   }, [randomNum]);
 
   return (
-    <div className="relative flex justify-center items-start w-full h-full ">
+    <div className="relative flex justify-center items-start w-full h-3/5 ">
       {randomNum !== 0 && (
         <img
           src={getImageUrl(data.results[randomNum].poster_path)}
           alt="banner_img"
           style={{
-            width: '100%',
-            height: '100%',
-            opacity: '0.7',
-            transition: 'all 0.5s ease-in-out',
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: opacity / 100,
+            transition: "all 0.5s ease-in-out",
           }}
         />
       )}
+      <div className="absolute z-10 w-full h-full bg-gradient-to-b from-black via-transparent to-black"></div>
     </div>
   );
 };
 
 export default MainImage;
-
-// const StyledImage = styled.img`
-//   width: 100%;
-//   height:  100%;
-//   object-fit: fill;
-//   transition: all 0.5s ease-in-out;
-
-//     pointer-events: none;
-//   }
-// `;
-
-// const Wrapper = styled.div`
-//   position: relative;
-//   display: flex;
-//   justify-content: center;
-//   align-items: flex-start;
-//   height: max(50vh);
-// `;
