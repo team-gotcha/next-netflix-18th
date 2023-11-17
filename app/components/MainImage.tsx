@@ -5,7 +5,7 @@ import { getImageUrl } from "@/api/movieApi";
 
 interface MainImageProps {
   data: {
-    results: {
+    results?: {
       id: number;
       poster_path: string;
     }[];

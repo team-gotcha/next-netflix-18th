@@ -1,5 +1,10 @@
 import api from "./index";
 
+// export async function getMovies(url: string) {
+//   const res = await fetch(`https://api.themoviedb.org/3/${url}`);
+//   return res.json();
+// }
+
 export const getMovies = (url: string) => {
   return api.get(url).then((res: any) => res.data);
 };
