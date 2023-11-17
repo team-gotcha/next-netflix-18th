@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 
 const ITEM_LIST = [
@@ -39,7 +39,15 @@ const ITEM_LIST = [
 
 const NavBar = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [currentTab, setCurrentTab] = useState<number>(0);
+
+  useEffect(() => {
+    const currentTabId = ITEM_LIST.findIndex((item) => item.link === pathname);
+    if (currentTabId !== -1) {
+      setCurrentTab(currentTabId);
+    }
+  }, [pathname]);
 
   const handleItemClick = (id: number, link: string) => {
     setCurrentTab(id);
