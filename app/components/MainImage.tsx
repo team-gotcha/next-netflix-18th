@@ -46,7 +46,7 @@ const MainImage = ({ data }: MainImageProps) => {
     <div className="relative flex justify-center items-start w-full h-3/5 ">
       {randomNum !== 0 && (
         <img
-          src={getImageUrl(data.results[randomNum].poster_path)}
+          src={getImageUrl(data?.results[randomNum].poster_path)}
           alt="banner_img"
           style={{
             width: "100%",
