@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+
 const Header = () => {
-  const MENU_LIST = ["TV Shows", "Movies", "My List"];
+  const MENU_LIST = ['TV Shows', 'Movies', 'My List'];
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = () => {
@@ -11,9 +12,9 @@ const Header = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -21,13 +22,13 @@ const Header = () => {
     <div
       className={`fixed top-0 flex justify-between items-center w-full max-w-[450px] h-[57px] px-4 md:px-5 lg:px-6 py-8 pr-8 z-50 transition-all duration-300 ease ${
         scrollPosition > 100
-          ? "bg-black"
-          : "bg-gradient-to-b from-[rgba(18, 18, 18, 0.9)] to-[rgba(18, 18, 18, 0)]"
+          ? 'bg-black'
+          : 'bg-gradient-to-b from-[rgba(18, 18, 18, 0.9)] to-[rgba(18, 18, 18, 0)]'
       }`}
     >
       <div>
         <Image
-          src={"/images/netflix-logo.svg"}
+          src={'/images/netflix-logo.svg'}
           width={57}
           height={57}
           alt="logo"
