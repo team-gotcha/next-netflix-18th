@@ -36,8 +36,7 @@ export default async function Main() {
   const [popularData, topRatedData, upComingData, nowPlayingData] =
     await getData();
   return (
-    <div className="relative max-w-[375px] w-full h-screen bg-black flex justify-start lg:w-[375px]">
-      <Header />
+<div className="relative max-w-[450px] w-full h-screen bg-black flex justify-start lg:w-[450px]">      <Header />
       <div className="flex flex-col w-full h-70vh gap-5 relative">
         {popularData && <MainImage data={popularData} />}
         <div className="absolute top-10 left-0 w-full h-full flex items-center justify-center pointer-events-none">
