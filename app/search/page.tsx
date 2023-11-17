@@ -20,7 +20,6 @@ export default function Search() {
       enabled: inputValue !== "",
     }
   );
-  console.log(searchResults);
 
   return (
     <div className="flex flex-col w-full h-screen items-start max-w-[450px] scrollbar-none">
