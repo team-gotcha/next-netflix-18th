@@ -13,7 +13,6 @@ interface dataProps {
 
 export default function Detail() {
   let movieId = '0';
-  //pathvariable 추출
   const router = usePathname();
   const numberPart = router.match(/\d+/);
 
